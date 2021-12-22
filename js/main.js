@@ -1,4 +1,7 @@
 window.addEventListener('load', function() {
+
+  const __API_URL = 'https://rwizthi03a.execute-api.eu-west-3.amazonaws.com/dev';
+  const __API_URL_TEST = 'http://w99762ln.beget.tech/pinterest0303/products.json';
   
   try {
 
@@ -35,6 +38,17 @@ window.addEventListener('load', function() {
         headerNav.classList.add('active')
       }
     });
+
+    async function getProducts() {
+      const response = await fetch(__API_URL, {method: 'POST'});
+      const data = await response.json();
+      return data;
+    };
+
+    getProducts()
+      .then(data => {
+        console.log(data);
+      });
 
 
 
