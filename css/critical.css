@@ -144,6 +144,22 @@ body {
   padding: 0;
   border: 0;
   text-align: left;
+  background: rgba(0, 0, 0, 0);
+}
+
+.clear {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  cursor: pointer;
+  padding: 8px;
+}
+
+.clear img {
+  display: block;
 }
 
 .wrapper {
@@ -157,6 +173,51 @@ body {
 
 .no-scroll {
   overflow: hidden;
+}
+
+.loader {
+  text-align: center;
+  width: 100%;
+  margin-top: 150px;
+}
+
+.loader svg {
+  width: 80px;
+  height: 80px;
+  -webkit-animation: loader .7s infinite linear;
+  animation: loader .7s infinite linear;
+}
+
+.db {
+  display: block;
+}
+
+.dn {
+  display: none;
+}
+
+@-webkit-keyframes loader {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes loader {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
 }
 
 .sliderText {
@@ -277,6 +338,19 @@ body {
 .logo {
   width: 150px;
   height: auto;
+}
+
+.search {
+  position: relative;
+}
+
+.search input {
+  width: 100%;
+  border-radius: 30px;
+  border: none;
+  background: #efefef;
+  padding: 18px 30px;
+  font-size: 20px;
 }
 
 @media (max-width: 1440px) {
