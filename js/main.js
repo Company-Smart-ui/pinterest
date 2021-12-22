@@ -1,8 +1,7 @@
 window.addEventListener('load', function() {
 
   const __API_URL = 'https://rwizthi03a.execute-api.eu-west-3.amazonaws.com/dev';
-  const __API_URL_TEST = 'http://w99762ln.beget.tech/pinterest0303/products.json';
-  const __API_URL_TEST2 = 'http://w99762ln.beget.tech/pinterest0303/';
+  const __API_URL_TEST = '/js/products.json';
   const __PRODUCTS_LIMIT = 300;
 
   let globalProducts = null;
@@ -163,8 +162,6 @@ window.addEventListener('load', function() {
     function search() {
       const val = this.value;
 
-      console.log(val);
-
       if (val) {
         let newProducts = globalProducts.filter(item => item.name.toLowerCase().indexOf(val.toLowerCase()) > 0);
 
@@ -176,12 +173,10 @@ window.addEventListener('load', function() {
       } else {
         render(globalProducts, photoGrid);
       }
-
-      console.log('search complete');
     }
 
     async function getProducts() {
-      const response = await fetch(__API_URL, {method: "POST"});
+      const response = await fetch(__API_URL_TEST);
       const data = await response.json();
 
       return data;
