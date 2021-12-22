@@ -1,7 +1,7 @@
 window.addEventListener('load', function() {
 
   const __API_URL = 'https://rwizthi03a.execute-api.eu-west-3.amazonaws.com/dev';
-  const __API_URL_TEST = '/js/products.json';
+  const __API_URL_TEST = '/pinterest/js/products.json';
   const __PRODUCTS_LIMIT = 300;
 
   let globalProducts = null;
