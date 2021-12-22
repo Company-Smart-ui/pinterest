@@ -1,0 +1,15 @@
+body {
+	overflow: hidden;
+}
+body::before {
+	content: 'К сожалению сайт не может открыться в вашем браузере, так как он устарел. Пожалуйста обновите ваш браузер и попробуйте еще раз.';
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: #fff;
+  z-index: 1000;
+  text-align: center;
+  padding-top: 50px;
+}
