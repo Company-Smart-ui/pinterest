@@ -181,7 +181,7 @@ window.addEventListener('load', function() {
     }
 
     async function getProducts() {
-      const response = await fetch(__API_URL_TEST2, {method: "POST"});
+      const response = await fetch(__API_URL, {method: "POST"});
       const data = await response.json();
 
       return data;
