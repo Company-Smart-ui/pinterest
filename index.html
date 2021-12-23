@@ -4,16 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Main</title><link rel="stylesheet" href="css/critical.css">  </head>
+    <title>Home page</title><link rel="stylesheet" href="css/critical.css">  </head>
   <body class="root page-home">
     <header class="header">
       <div class="wrapper">
-        <nav class="header__nav"><a href="./"> <img class="logo" src="./img/lululemon-logo.png" alt="Logo" width="150" height="50"></a>
+        <nav class="header__nav"><a href="./"> <img class="logo" src="./img/lululemon-logo1.png" alt="Logo" width="150" height="50"></a>
           <ul class="header__menu">
             <li class="nav-item"><a class="nav-link" href="./search.html">Search</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">About</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Log in</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Sign up</a></li>
+            <li class="nav-item login"><a class="nav-link" href="#">Log in</a></li>
+            <li class="nav-item register"><a class="nav-link" href="#">Sign up</a></li>
           </ul>
           <button class="button header__burger"><img class="header__burgerOpener" src="./img/icons/burger.svg" alt=""><img class="header__burgerCloser" src="./img/icons/close.svg" alt=""></button>
         </nav>
@@ -22,24 +21,12 @@
     <main class="main">
       <section class="section"> 
         <div class="wrapper">
-          <div class="sliderTextWrap">      
-            <div class="sliderText swiper-container">
-              <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                  <p>Get your next</p>
-                  <p class="accent">weeknight dinner idea</p>
-                </div>
-                <div class="swiper-slide">
-                  <p>Lorem ipsum dolor </p>
-                  <p class="accent">sit amet consectetur</p>
-                </div>
-                <div class="swiper-slide">
-                  <p>Consectetur adipisicing elit</p>
-                  <p class="accent">dolor sit amet </p>
-                </div>
-              </div>
-              <div class="swiper-pagination"></div>
-            </div>
+          <div class="getNext">
+            <p>Get your next</p>
+            <form action="./search.html">
+              <input class="input" type="text" name="search" placeholder="plant" id="get_next">
+              <button class="button"><img src="./img/icons/search.svg" alt=""></button>
+            </form>
           </div>
         </div>
       </section>

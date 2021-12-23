@@ -6,8 +6,6 @@ window.addEventListener('load', function() {
   const __API_URL_GITHUB = '/pinterest/js/products.json';
   const __PRODUCTS_LIMIT = 300;
   const __DEBOUNCE_DELAY = 600;
-  const __SLIDER_AUTOPLAY = 3000;
-  const __SLIDER_CHANGE_SPEED = 400;
 
   let globalProducts = null;
   let searchDebouncetimer;
@@ -15,30 +13,14 @@ window.addEventListener('load', function() {
 
   //wrapper
   try {
-    const textMain = document.querySelector('.sliderText');
     const headerBurger = document.querySelector('.header__burger');
     const headerNav = document.querySelector('.header__nav');
     const photoGrid = document.querySelector('.photoGrid');
     const loader = document.querySelector('.loader');
     const productsSearch = document.querySelector('#products_search');
     const clearSearch = document.querySelector('#clear_search');
+    let {pathname: __PATH, search: __QUERY} = location;
 
-
-    // slider text   
-    let text_slider_params = {
-      slidesPerView: 1,
-      speed: __SLIDER_CHANGE_SPEED,
-      effect: 'fade',
-      autoplay: { delay: __SLIDER_AUTOPLAY, disableOnInteraction: false },
-      pagination: {
-        el: '.swiper-pagination',
-        type: 'bullets',
-        clickable: true,
-        renderBullet: (index, className) => `<div data-index="${index}" class="${className} bullet"></div>`
-      }
-    };
-
-    new Swiper(textMain, text_slider_params);
 
 
     // handlers
@@ -57,7 +39,7 @@ window.addEventListener('load', function() {
     if (productsSearch) {
       productsSearch.addEventListener('input', e => {
         clearTimeout(searchDebouncetimer);
-        let fn = search.bind(e.target);
+        let fn = search.bind(null, e.target.value);
         searchDebouncetimer = setTimeout(fn, __DEBOUNCE_DELAY);   
         
         if (e.target.value) clearSearch.classList.remove('dn');
@@ -72,15 +54,33 @@ window.addEventListener('load', function() {
         }        
       });
     }
-
     
 
     
-
+    // fetching products
     getProducts()
       .then(({products}) => {
         globalProducts = products;
-        render(products, photoGrid);
+
+        //trigger search if already has query
+        if (__PATH.indexOf('search') >= 0) {
+          if (__QUERY) {
+            const query = __QUERY.split('=')[1];
+    
+            try {          
+              productsSearch.value = query;
+              clearSearch.classList.remove('dn');
+              search(query);
+            } catch(err){
+              console.warn(err);
+            }
+          } else {
+            render(products, photoGrid);
+          }
+        } else {
+          render(products, photoGrid);
+        }
+        
       })
       .catch(err => {
         loader.remove();
@@ -110,7 +110,7 @@ window.addEventListener('load', function() {
     function createCard(item, counter) {
       const name = item.name || 'Product';
       const brand = item.brand || 'Brand';
-      const image = item.image || './img/placeholder.png';
+      const image = item.image ? item.image.replaceAll('1600', '400') : './img/placeholder.png';
       const price = item.offers.price || '--.--';
       const lowPrice = item.offers.lowPrice;
       const highPrice = item.offers.highPrice;
@@ -140,10 +140,9 @@ window.addEventListener('load', function() {
       return product;
     }
 
-    function search() {
-      const val = this.value;
-
+    function search(val) {
       if (val) {
+        console.log('begin search by', val);
         let newProducts = globalProducts.filter(item => item.name.toLowerCase().indexOf(val.toLowerCase()) > 0);
         if (newProducts.length) render(newProducts, photoGrid); 
         else photoGrid.innerHTML = 'Not found...';

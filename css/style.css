@@ -277,17 +277,26 @@ body {
   color: #000;
   font-size: 18px;
   font-weight: 700;
-  border-radius: 16px;
-  padding: 10px;
+  border-radius: 30px;
+  padding: 14px 20px;
   text-decoration: none;
   -webkit-transition: all .2s;
   -o-transition: all .2s;
   transition: all .2s;
+  white-space: nowrap;
 }
 
 .header__menu li a:hover {
+  text-decoration: underline;
+}
+
+.header__menu li.login a {
   background: red;
   color: #fff;
+}
+
+.header__menu li.register a {
+  background: #d3d1d0;
 }
 
 .header__burger {
@@ -315,7 +324,7 @@ body {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  padding: 8px 0;
+  padding: 16px 0;
 }
 
 .header__nav.active .header__menu {
@@ -340,92 +349,17 @@ body {
 
 .search {
   position: relative;
+  width: 70%;
+  margin: 0 16px;
 }
 
-.search input {
+.input {
   width: 100%;
   border-radius: 30px;
   border: none;
   background: #efefef;
   padding: 18px 50px 18px 30px;
   font-size: 20px;
-}
-
-/* montserrat-300 - latin_cyrillic */
-
-@font-face {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 300;
-  src: url("../fonts/montserrat-v15-latin_cyrillic-300.eot");
-  src: local(""), url("../fonts/montserrat-v15-latin_cyrillic-300.eot?#iefix") format("embedded-opentype"), url("../fonts/montserrat-v15-latin_cyrillic-300.woff2") format("woff2"), url("../fonts/montserrat-v15-latin_cyrillic-300.woff") format("woff"), url("../fonts/montserrat-v15-latin_cyrillic-300.ttf") format("truetype"), url("../fonts/montserrat-v15-latin_cyrillic-300.svg#Montserrat") format("svg");
-}
-
-/* montserrat-regular - latin_cyrillic */
-
-@font-face {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 400;
-  src: url("../fonts/montserrat-v15-latin_cyrillic-regular.eot");
-  src: local(""), url("../fonts/montserrat-v15-latin_cyrillic-regular.eot?#iefix") format("embedded-opentype"), url("../fonts/montserrat-v15-latin_cyrillic-regular.woff2") format("woff2"), url("../fonts/montserrat-v15-latin_cyrillic-regular.woff") format("woff"), url("../fonts/montserrat-v15-latin_cyrillic-regular.ttf") format("truetype"), url("../fonts/montserrat-v15-latin_cyrillic-regular.svg#Montserrat") format("svg");
-}
-
-/* montserrat-500 - latin_cyrillic */
-
-@font-face {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 500;
-  src: url("../fonts/montserrat-v15-latin_cyrillic-500.eot");
-  src: local(""), url("../fonts/montserrat-v15-latin_cyrillic-500.eot?#iefix") format("embedded-opentype"), url("../fonts/montserrat-v15-latin_cyrillic-500.woff2") format("woff2"), url("../fonts/montserrat-v15-latin_cyrillic-500.woff") format("woff"), url("../fonts/montserrat-v15-latin_cyrillic-500.ttf") format("truetype"), url("../fonts/montserrat-v15-latin_cyrillic-500.svg#Montserrat") format("svg");
-}
-
-/* montserrat-600 - latin_cyrillic */
-
-@font-face {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 600;
-  src: url("../fonts/montserrat-v15-latin_cyrillic-600.eot");
-  src: local(""), url("../fonts/montserrat-v15-latin_cyrillic-600.eot?#iefix") format("embedded-opentype"), url("../fonts/montserrat-v15-latin_cyrillic-600.woff2") format("woff2"), url("../fonts/montserrat-v15-latin_cyrillic-600.woff") format("woff"), url("../fonts/montserrat-v15-latin_cyrillic-600.ttf") format("truetype"), url("../fonts/montserrat-v15-latin_cyrillic-600.svg#Montserrat") format("svg");
-}
-
-/* montserrat-700 - latin_cyrillic */
-
-@font-face {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 700;
-  src: url("../fonts/montserrat-v15-latin_cyrillic-700.eot");
-  src: local(""), url("../fonts/montserrat-v15-latin_cyrillic-700.eot?#iefix") format("embedded-opentype"), url("../fonts/montserrat-v15-latin_cyrillic-700.woff2") format("woff2"), url("../fonts/montserrat-v15-latin_cyrillic-700.woff") format("woff"), url("../fonts/montserrat-v15-latin_cyrillic-700.ttf") format("truetype"), url("../fonts/montserrat-v15-latin_cyrillic-700.svg#Montserrat") format("svg");
-}
-
-/* montserrat-800 - latin_cyrillic */
-
-@font-face {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 800;
-  src: url("../fonts/montserrat-v15-latin_cyrillic-800.eot");
-  src: local(""), url("../fonts/montserrat-v15-latin_cyrillic-800.eot?#iefix") format("embedded-opentype"), url("../fonts/montserrat-v15-latin_cyrillic-800.woff2") format("woff2"), url("../fonts/montserrat-v15-latin_cyrillic-800.woff") format("woff"), url("../fonts/montserrat-v15-latin_cyrillic-800.ttf") format("truetype"), url("../fonts/montserrat-v15-latin_cyrillic-800.svg#Montserrat") format("svg");
-}
-
-/* montserrat-900 - latin_cyrillic */
-
-@font-face {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 900;
-  src: url("../fonts/montserrat-v15-latin_cyrillic-900.eot");
-  src: local(""), url("../fonts/montserrat-v15-latin_cyrillic-900.eot?#iefix") format("embedded-opentype"), url("../fonts/montserrat-v15-latin_cyrillic-900.woff2") format("woff2"), url("../fonts/montserrat-v15-latin_cyrillic-900.woff") format("woff"), url("../fonts/montserrat-v15-latin_cyrillic-900.ttf") format("truetype"), url("../fonts/montserrat-v15-latin_cyrillic-900.svg#Montserrat") format("svg");
 }
 
 .caption {
@@ -703,6 +637,82 @@ body {
   grid-row-end: span 2;
 }
 
+.getNext {
+  max-width: 40%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.getNext p {
+  margin-bottom: 0;
+  font-size: 60px;
+  font-weight: 700;
+  line-height: 60px;
+}
+
+.getNext form {
+  margin-top: 16px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+}
+
+.getNext form .input {
+  text-align: center;
+  font-size: 60px;
+  font-weight: 700;
+  line-height: 60px;
+  color: #127012;
+  padding: 4px 45px;
+}
+
+.getNext form .input::-webkit-input-placeholder {
+  color: #127012;
+}
+
+.getNext form .input::-moz-placeholder {
+  color: #127012;
+}
+
+.getNext form .input:-moz-placeholder {
+  color: #127012;
+}
+
+.getNext form .input:-ms-input-placeholder {
+  color: #127012;
+}
+
+.getNext form .button {
+  border: 1px solid #a9a9a9;
+  border-radius: 30px;
+  width: 80px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: -35px;
+  background: #efefef;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.getNext form .button:hover {
+  background: #b9b9b9;
+}
+
+.getNext form .button img {
+  width: 40%;
+  height: 40%;
+}
+
 @media (max-width: 1440px) {
   .sliderText .swiper-slide p {
     font-size: 40px;
@@ -721,11 +731,30 @@ body {
     width: 12%;
     height: 250px;
   }
+
+  .getNext p {
+    font-size: 40px;
+    line-height: 40px;
+  }
+
+  .getNext form .input {
+    font-size: 40px;
+    line-height: 40px;
+  }
 }
 
 @media (max-width: 1223px) {
   .sliderTextWrap {
     margin-top: 40px;
+  }
+
+  .header__menu li a {
+    font-size: 14px;
+    padding: 8px 14px;
+  }
+
+  .input {
+    padding: 12px 50px 12px 30px;
   }
 
   .caption p {
@@ -758,6 +787,10 @@ body {
     height: 40px;
   }
 
+  .logo {
+    width: 120px;
+  }
+
   .price span {
     font-size: 14px;
   }
@@ -787,6 +820,10 @@ body {
 
   .products--grid .photoGrid {
     grid-template-columns: repeat(3, minmax(150px, 300px));
+  }
+
+  .getNext {
+    max-width: 55%;
   }
 }
 
@@ -837,9 +874,40 @@ body {
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
   }
+
+  .getNext {
+    max-width: 100%;
+  }
+
+  .getNext p {
+    font-size: 30px;
+    line-height: 36px;
+  }
+
+  .getNext form {
+    margin-top: 4px;
+  }
+
+  .getNext form .input {
+    font-size: 30px;
+    line-height: 36px;
+  }
+
+  .getNext form .button {
+    right: 0;
+    width: 45px;
+  }
 }
 
 @media (max-width: 500px) {
+  .logo {
+    width: 100px;
+  }
+
+  .input {
+    font-size: 14px;
+  }
+
   .caption p {
     font-size: 14px;
   }

@@ -4,30 +4,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Main</title><link rel="stylesheet" href="css/critical.css">  </head>
-  <body class="root page-home">
+    <title>Search page</title><link rel="stylesheet" href="css/critical.css">  </head>
+  <body class="root page-search">
     <header class="header">
       <div class="wrapper">
-        <nav class="header__nav"><a href="./"> <img class="logo" src="./img/lululemon-logo.png" alt="Logo" width="150" height="50"></a>
+        <nav class="header__nav"><a href="./"> <img class="logo" src="./img/lululemon-logo1.png" alt="Logo" width="150" height="50"></a>
+          <div class="search">
+            <input class="input" type="text" placeholder="Search..." id="products_search">
+            <button class="clear button dn" id="clear_search"><img src="./img/icons/close.svg" alt=""></button>
+          </div>
           <ul class="header__menu">
             <li class="nav-item"><a class="nav-link" href="./search.html">Search</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">About</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Log in</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Sign up</a></li>
+            <li class="nav-item login"><a class="nav-link" href="#">Log in</a></li>
+            <li class="nav-item register"><a class="nav-link" href="#">Sign up</a></li>
           </ul>
           <button class="button header__burger"><img class="header__burgerOpener" src="./img/icons/burger.svg" alt=""><img class="header__burgerCloser" src="./img/icons/close.svg" alt=""></button>
         </nav>
       </div>
     </header>
     <main class="main">
-      <section class="section">
-        <div class="wrapper">
-          <div class="search">
-            <input type="text" placeholder="Search..." id="products_search">
-            <button class="clear button dn" id="clear_search"><img src="./img/icons/close.svg" alt=""></button>
-          </div>
-        </div>
-      </section>
       <section class="section products products--grid">
         <div class="wrapper">
           <div class="photoGrid"> 

@@ -277,17 +277,26 @@ body {
   color: #000;
   font-size: 18px;
   font-weight: 700;
-  border-radius: 16px;
-  padding: 10px;
+  border-radius: 30px;
+  padding: 14px 20px;
   text-decoration: none;
   -webkit-transition: all .2s;
   -o-transition: all .2s;
   transition: all .2s;
+  white-space: nowrap;
 }
 
 .header__menu li a:hover {
+  text-decoration: underline;
+}
+
+.header__menu li.login a {
   background: red;
   color: #fff;
+}
+
+.header__menu li.register a {
+  background: #d3d1d0;
 }
 
 .header__burger {
@@ -315,7 +324,7 @@ body {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  padding: 8px 0;
+  padding: 16px 0;
 }
 
 .header__nav.active .header__menu {
@@ -340,9 +349,11 @@ body {
 
 .search {
   position: relative;
+  width: 70%;
+  margin: 0 16px;
 }
 
-.search input {
+.input {
   width: 100%;
   border-radius: 30px;
   border: none;
@@ -362,12 +373,25 @@ body {
   .sliderTextWrap {
     margin-top: 40px;
   }
+
+  .header__menu li a {
+    font-size: 14px;
+    padding: 8px 14px;
+  }
+
+  .input {
+    padding: 12px 50px 12px 30px;
+  }
 }
 
 @media (max-width: 992px) {
   .loader svg {
     width: 40px;
     height: 40px;
+  }
+
+  .logo {
+    width: 120px;
   }
 }
 
@@ -417,5 +441,15 @@ body {
     -webkit-transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
+  }
+}
+
+@media (max-width: 500px) {
+  .logo {
+    width: 100px;
+  }
+
+  .input {
+    font-size: 14px;
   }
 }
