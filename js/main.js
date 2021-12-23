@@ -1,18 +1,20 @@
 window.addEventListener('load', function() {
 
+  //conf
   const __API_URL = 'https://rwizthi03a.execute-api.eu-west-3.amazonaws.com/dev';
-  const __API_URL_TEST = '/pinterest/js/products.json';
+  const __API_URL_TEST = '/js/products.json';
+  const __API_URL_GITHUB = '/pinterest/js/products.json';
   const __PRODUCTS_LIMIT = 300;
+  const __DEBOUNCE_DELAY = 600;
+  const __SLIDER_AUTOPLAY = 3000;
+  const __SLIDER_CHANGE_SPEED = 400;
 
   let globalProducts = null;
-  let globalProductsCache = null;
-
   let searchDebouncetimer;
   
+
+  //wrapper
   try {
-
-
-
     const textMain = document.querySelector('.sliderText');
     const headerBurger = document.querySelector('.header__burger');
     const headerNav = document.querySelector('.header__nav');
@@ -20,51 +22,46 @@ window.addEventListener('load', function() {
     const loader = document.querySelector('.loader');
     const productsSearch = document.querySelector('#products_search');
     const clearSearch = document.querySelector('#clear_search');
-    
 
+
+    // slider text   
     let text_slider_params = {
       slidesPerView: 1,
-      speed: 200,
+      speed: __SLIDER_CHANGE_SPEED,
       effect: 'fade',
-      autoplay: {
-        delay: 401100,
-      },
+      autoplay: { delay: __SLIDER_AUTOPLAY, disableOnInteraction: false },
       pagination: {
         el: '.swiper-pagination',
         type: 'bullets',
         clickable: true,
-        renderBullet: function (index, className) {
-          return `<div class="${className} bullet"></div>`;
-        },
+        renderBullet: (index, className) => `<div data-index="${index}" class="${className} bullet"></div>`
       }
     };
 
-
     new Swiper(textMain, text_slider_params);
 
-    headerBurger.addEventListener('click', function() {
-      if (headerNav.classList.contains('active')) {
-        document.body.classList.remove('no-scroll');
-        headerNav.classList.remove('active')
-      } else {
-        document.body.classList.add('no-scroll');
-        headerNav.classList.add('active')
-      }
-    });
 
-    
+    // handlers
+    if (headerBurger) {
+      headerBurger.addEventListener('click', function() {
+        if (headerNav.classList.contains('active')) {
+          document.body.classList.remove('no-scroll');
+          headerNav.classList.remove('active');
+        } else {
+          document.body.classList.add('no-scroll');
+          headerNav.classList.add('active');
+        }
+      });
+    }    
 
     if (productsSearch) {
       productsSearch.addEventListener('input', e => {
         clearTimeout(searchDebouncetimer);
         let fn = search.bind(e.target);
-        searchDebouncetimer = setTimeout(fn, 600);   
+        searchDebouncetimer = setTimeout(fn, __DEBOUNCE_DELAY);   
         
-        if (e.target.value) {
-          clearSearch.classList.remove('dn');
-        } else {
-          clearSearch.classList.add('dn');
-        }
+        if (e.target.value) clearSearch.classList.remove('dn');
+        else clearSearch.classList.add('dn');
       });
 
       clearSearch.addEventListener('click', function() {
@@ -83,8 +80,6 @@ window.addEventListener('load', function() {
     getProducts()
       .then(({products}) => {
         globalProducts = products;
-        globalProductsCache = products;
-
         render(products, photoGrid);
       })
       .catch(err => {
@@ -93,11 +88,7 @@ window.addEventListener('load', function() {
       })
 
 
-
-
-
     // utils
-
     function render(products, wrapper) {
       let counter = 1;
       let productsList = '';
@@ -124,35 +115,25 @@ window.addEventListener('load', function() {
       const lowPrice = item.offers.lowPrice;
       const highPrice = item.offers.highPrice;
       let currency;
-      let priceBlock;     
+      let total;     
 
-      if (item.offers.priceCurrency == 'EUR') {
-        currency = '€';
-      } else if (item.offers.priceCurrency == 'USD') {
-        currency = '$';
-      }
+      if (item.offers.priceCurrency == 'EUR') currency = '€';
+      else if (item.offers.priceCurrency == 'USD') currency = '$';
 
-      if (lowPrice && highPrice) {
-        priceBlock = `
-          <div class="price">
-            <span class="lowPrice">${currency} ${lowPrice}</span>
-            <span class="highPrice">${currency} ${highPrice}</span>
-          </div>`;
-      } else {
-        priceBlock = `
-          <div class="price">
-            <span>${currency} ${price}</span>
-          </div>`;
-      }
+      lowPrice && highPrice ? total = lowPrice : total = price;
 
       let product = `
         <button class="card button level-${counter}" onclick="window.open('${item['@id']}', '_blank')">
-          <img class="lazyload" width="236" height="236" data-src="${image}" src="./img/placeholder.png" alt="${name}">
+          <div class="cardImage">
+            <img class="lazyload" width="236" height="236" data-src="${image}" src="./img/placeholder.png" alt="${name}">
+          </div>
           <div class="caption">
             <p class="name">${name}</p>
             <p class="brand">${brand}</p>
           </div>
-          ${priceBlock}
+          <div class="price">
+            <span>${currency} ${total}</span>
+          </div>
         </button>
       `;
 
@@ -164,19 +145,14 @@ window.addEventListener('load', function() {
 
       if (val) {
         let newProducts = globalProducts.filter(item => item.name.toLowerCase().indexOf(val.toLowerCase()) > 0);
-
-        if (newProducts.length) {
-          render(newProducts, photoGrid);
-        } else {
-          photoGrid.innerHTML = 'Not found...';
-        }
-      } else {
-        render(globalProducts, photoGrid);
-      }
+        if (newProducts.length) render(newProducts, photoGrid); 
+        else photoGrid.innerHTML = 'Not found...';
+      } 
+      else render(globalProducts, photoGrid);
     }
 
     async function getProducts() {
-      const response = await fetch(__API_URL_TEST);
+      const response = await fetch(__API_URL_GITHUB);
       const data = await response.json();
 
       return data;

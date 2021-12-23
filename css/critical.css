@@ -221,10 +221,8 @@ body {
 }
 
 .sliderText {
-  position: absolute !important;
-  top: 10px;
-  left: 30%;
-  right: 30%;
+  max-width: 60%;
+  margin: 0 auto;
 }
 
 .sliderText .swiper-pagination {
@@ -349,15 +347,11 @@ body {
   border-radius: 30px;
   border: none;
   background: #efefef;
-  padding: 18px 30px;
+  padding: 18px 50px 18px 30px;
   font-size: 20px;
 }
 
 @media (max-width: 1440px) {
-  .sliderText {
-    top: 50px;
-  }
-
   .sliderText .swiper-slide p {
     font-size: 40px;
     line-height: 40px;
@@ -371,9 +365,9 @@ body {
 }
 
 @media (max-width: 992px) {
-  .sliderText {
-    position: static !important;
-    width: 100%;
+  .loader svg {
+    width: 40px;
+    height: 40px;
   }
 }
 

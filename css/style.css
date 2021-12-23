@@ -221,10 +221,8 @@ body {
 }
 
 .sliderText {
-  position: absolute !important;
-  top: 10px;
-  left: 30%;
-  right: 30%;
+  max-width: 60%;
+  margin: 0 auto;
 }
 
 .sliderText .swiper-pagination {
@@ -349,7 +347,7 @@ body {
   border-radius: 30px;
   border: none;
   background: #efefef;
-  padding: 18px 30px;
+  padding: 18px 50px 18px 30px;
   font-size: 20px;
 }
 
@@ -431,14 +429,8 @@ body {
 }
 
 .caption {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  opacity: 0;
-  padding: 0 8px;
+  margin-top: 8px;
   max-width: 100%;
-  max-height: calc(100% - 40px);
   overflow: hidden;
   -webkit-transition: all .2s .1s;
   -o-transition: all .2s .1s;
@@ -446,14 +438,14 @@ body {
 }
 
 .caption p {
-  color: #fff;
+  color: #000;
   font-size: 16px;
   font-weight: 700;
   line-height: 16px;
   display: -webkit-box;
-  max-height: 84px;
+  max-height: 32px;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 4;
+  -webkit-line-clamp: 2;
   overflow: hidden;
   -o-text-overflow: ellipsis;
   text-overflow: ellipsis;
@@ -466,14 +458,17 @@ body {
 .caption .brand {
   font-size: 12px;
   font-weight: normal;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .price {
   position: absolute;
-  top: 0;
+  top: 20px;
   left: 8px;
-  opacity: 0;
-  padding: 8px 12px;
+  padding: 8px;
   max-width: calc(100% - 16px);
   max-height: calc(100% - 40px);
   background: #fff;
@@ -492,7 +487,7 @@ body {
 
 .price span {
   color: #000;
-  font-size: 16px;
+  font-size: 12px;
   font-weight: 700;
   display: inline-block;
   overflow: hidden;
@@ -503,21 +498,57 @@ body {
 
 .price .highPrice {
   text-decoration: line-through;
-  font-size: 14px;
+  font-size: 12px;
   opacity: .6;
   margin-left: 4px;
 }
 
+.cardImage {
+  width: 100%;
+  height: calc(100% - 60px);
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+.cardImage::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  -webkit-transition: all .2s;
+  -o-transition: all .2s;
+  transition: all .2s;
+}
+
+.cardImage img {
+  max-width: 100%;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+  display: block;
+}
+
 .card {
   border-radius: 5px;
-  background: #f2f2f2;
-  border-radius: 10px;
   overflow: hidden;
   position: relative;
   cursor: pointer;
   width: 13%;
   height: 350px;
   margin: 8px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
 }
 
 .card:nth-child(2) {
@@ -564,46 +595,18 @@ body {
   margin-top: -264px;
 }
 
-.card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.7);
-  opacity: 0;
-  -webkit-transition: all .2s;
-  -o-transition: all .2s;
-  transition: all .2s;
+.card:hover .caption .name,
+.card:focus .caption .name {
+  text-decoration: underline;
 }
 
-.card img {
-  max-width: 100%;
-  width: 100%;
-  height: 100%;
-  -o-object-fit: cover;
-  object-fit: cover;
-}
-
-.card:hover::before,
-.card:focus::before {
+.card:hover .cardImage::before,
+.card:focus .cardImage::before {
   opacity: 1;
 }
 
-.card:hover .caption,
-.card:focus .caption {
-  opacity: 1;
-  bottom: 20px;
-}
-
-.card:hover .price,
-.card:focus .price {
-  opacity: 1;
-  top: 20px;
-  -webkit-transition-delay: .3s;
-  -o-transition-delay: .3s;
-  transition-delay: .3s;
+.products {
+  margin-top: -150px;
 }
 
 .products .photoGrid {
@@ -613,6 +616,42 @@ body {
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   padding-top: 70px;
+}
+
+.products .photoGrid .loader {
+  grid-column: 1/7;
+}
+
+.products .photoGrid .level-1 {
+  grid-row-end: span 2;
+}
+
+.products .photoGrid .level-2 {
+  grid-row-end: span 1;
+}
+
+.products .photoGrid .level-3 {
+  grid-row-end: span 2;
+}
+
+.products .photoGrid .level-4 {
+  grid-row-end: span 1;
+}
+
+.products .photoGrid .level-5 {
+  grid-row-end: span 2;
+}
+
+.products .photoGrid .level-6 {
+  grid-row-end: span 1;
+}
+
+.products .photoGrid .level-7 {
+  grid-row-end: span 2;
+}
+
+.products--grid {
+  margin-top: 0;
 }
 
 .products--grid .photoGrid {
@@ -625,7 +664,7 @@ body {
   padding-top: 40px;
 }
 
-.products--grid .loader {
+.products--grid .photoGrid .loader {
   grid-column: 2/7;
   margin-top: 0;
 }
@@ -665,13 +704,17 @@ body {
 }
 
 @media (max-width: 1440px) {
-  .sliderText {
-    top: 50px;
-  }
-
   .sliderText .swiper-slide p {
     font-size: 40px;
     line-height: 40px;
+  }
+
+  .price {
+    padding: 4px;
+  }
+
+  .price span {
+    font-size: 10px;
   }
 
   .card {
@@ -685,21 +728,48 @@ body {
     margin-top: 40px;
   }
 
+  .caption p {
+    font-size: 14px;
+    line-height: 14px;
+  }
+
+  .price {
+    position: static;
+    margin-top: 4px;
+    padding: 0;
+  }
+
+  .cardImage {
+    height: calc(100% - 60px - 15px);
+  }
+
   .products--grid .photoGrid {
     grid-template-columns: repeat(5, minmax(150px, 300px));
+  }
+
+  .products--grid .photoGrid .loader {
+    grid-column: 1/7;
   }
 }
 
 @media (max-width: 992px) {
-  .sliderText {
-    position: static !important;
-    width: 100%;
+  .loader svg {
+    width: 40px;
+    height: 40px;
+  }
+
+  .price span {
+    font-size: 14px;
   }
 
   .card {
     width: 100%;
     height: auto;
     margin: 0 !important;
+  }
+
+  .products {
+    margin-top: 0;
   }
 
   .products .photoGrid {
@@ -709,6 +779,10 @@ body {
     -webkit-box-pack: center;
     -ms-flex-pack: center;
     justify-content: center;
+  }
+
+  .products .photoGrid .loader {
+    margin-top: 0;
   }
 
   .products--grid .photoGrid {
@@ -767,10 +841,6 @@ body {
 
 @media (max-width: 500px) {
   .caption p {
-    font-size: 14px;
-  }
-
-  .price span {
     font-size: 14px;
   }
 
