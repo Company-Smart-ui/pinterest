@@ -57,10 +57,11 @@ window.addEventListener('load', function() {
         else clearSearch.classList.add('dn');
       });
 
-      clearSearch.addEventListener('click', function() {
+      clearSearch.addEventListener('click', async function() {
         if (productsSearch.value) {
           productsSearch.value = '';
           clearSearch.classList.add('dn');
+          await getProducts();
           render(globalProducts, photoGrid);
         }
       });
@@ -139,8 +140,7 @@ window.addEventListener('load', function() {
     // fetching products
     getProducts()
       .then((products) => {
-        globalProducts = products;
-
+        
         //trigger search if already has query
         if (__PATH.indexOf('search') >= 0) {
           if (__QUERY) {
@@ -172,7 +172,6 @@ window.addEventListener('load', function() {
       let counter = 1;
       let productsList = '';
 
-      console.log(products.length)
       products.map((item, i) => {
         if (i >= __PRODUCTS_LIMIT) return false;
 
@@ -221,7 +220,10 @@ window.addEventListener('load', function() {
         if (newProducts.length) render(newProducts, photoGrid);
         else photoGrid.innerHTML = 'Not found...';
       }
-      else render(globalProducts, photoGrid);
+      else {
+        await getProducts();
+        render(globalProducts, photoGrid);
+      }
     }
 
     async function getProducts(search_term="*", from=1, size=__PRODUCTS_LIMIT) {
@@ -242,6 +244,8 @@ window.addEventListener('load', function() {
       };
       const response = await fetch(__API_OPENSEARCH, requestOptions);
       const data = await response.json();
+
+      globalProducts = data.hits.hits;
 
       return data.hits.hits;
     };

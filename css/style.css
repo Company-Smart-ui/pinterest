@@ -319,7 +319,7 @@ body.loading::after {
 }
 
 .header__menu li.login a {
-  background: red;
+  background: #e60023;
   color: #fff;
 }
 
@@ -371,7 +371,7 @@ body.loading::after {
 }
 
 .logo {
-  width: 150px;
+  width: 300px;
   height: auto;
 }
 
@@ -804,7 +804,7 @@ body.loading::after {
 
 .getNext {
   max-width: 40%;
-  margin: 0 auto;
+  margin: 110px auto 100px auto;
   text-align: center;
 }
 
@@ -972,7 +972,7 @@ body.loading::after {
   }
 
   .logo {
-    width: 120px;
+    width: 200px;
   }
 
   .modal-card {
@@ -1189,10 +1189,6 @@ body.loading::after {
 }
 
 @media (max-width: 500px) {
-  .logo {
-    width: 100px;
-  }
-
   .input {
     font-size: 14px;
   }
